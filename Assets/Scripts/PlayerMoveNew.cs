@@ -46,6 +46,9 @@ public class PlayerMoveNew : MonoBehaviour
 
     CharacterController controller;
 
+    [Header("Others")]
+    public bool inFPS;
+
     Vector3 velocity;
     Vector2 currentMouseDelta;
     Vector2 mouseDeltaVelocity;
@@ -302,6 +305,7 @@ public class PlayerMoveNew : MonoBehaviour
     {
         thirdPersonCam.gameObject.SetActive(false);
         firstPersonCam.enabled = true;
+        inFPS = true;
 
         if (bodyMesh)
             bodyMesh.enabled = false;
@@ -313,6 +317,7 @@ public class PlayerMoveNew : MonoBehaviour
     {
         thirdPersonCam.gameObject.SetActive(true);
         firstPersonCam.enabled = false;
+        inFPS = false;
 
         if (bodyMesh)
             bodyMesh.enabled = true;

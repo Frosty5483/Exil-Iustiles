@@ -101,6 +101,15 @@ public class DialogueSysNew : MonoBehaviour
         playerMoveNew.EnterDialogue();
         mainCamera?.gameObject.SetActive(false);
         firstPersonCamera?.gameObject.SetActive(false);
+        if(firstPersonCamera.enabled)
+        {
+            playerMoveNew.inFPS = true;
+        }
+        else
+        {
+            playerMoveNew.inFPS = false;
+        }
+        firstPersonCamera.enabled = false;
         dialogueCamera?.gameObject.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
@@ -254,6 +263,16 @@ public class DialogueSysNew : MonoBehaviour
         dialogueCamera?.gameObject.SetActive(false);
         mainCamera?.gameObject.SetActive(true);
         firstPersonCamera?.gameObject.SetActive(true);
+        firstPersonCamera.enabled = true;
+
+        if (playerMoveNew.inFPS)
+        {
+            firstPersonCamera.enabled = true;
+        }
+        else if (playerMoveNew.inFPS == false)
+        {
+            firstPersonCamera.enabled = false;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
