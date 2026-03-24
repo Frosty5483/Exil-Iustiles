@@ -229,7 +229,7 @@ public class DialogueSysNew : MonoBehaviour
         }
 
         Button leaveBtn = Instantiate(optionButtonPrefab, optionsContainer);
-        leaveBtn.GetComponentInChildren<TMP_Text>().text = "Leave";
+        leaveBtn.GetComponentInChildren<TMP_Text>().text = "Ich habe es mir anders überlegt.";
         leaveBtn.onClick.AddListener(EndDialogue);
     }
 
