@@ -58,7 +58,7 @@ public class CutSceneManag : MonoBehaviour
         }
         else if (sceneI == cutsceneList.Count)
         {
-
+            cutsceneList[sceneI - 1].scene.gameObject.SetActive(false);
         }
     }
 }

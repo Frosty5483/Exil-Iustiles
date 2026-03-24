@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class UiInputSys : MonoBehaviour
@@ -12,6 +11,7 @@ public class UiInputSys : MonoBehaviour
     [SerializeField] private PlayerMoveNew playerMovNew;
     [SerializeField] private GameObject tpsCam;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject openQuestMenu;
     [SerializeField] private GameObject closedQuestMenu;
 
@@ -61,13 +61,23 @@ public class UiInputSys : MonoBehaviour
     {
         if (invOpen == false)
         {
-            Debug.Log("Open Inv");
+            playerMovNew.animator.enabled = false;
+            playerMovNew.enabled = false;
+            tpsCam.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            inventory.SetActive(true);
             StartCoroutine(waitForNexInv(0.25f));
         }
             
         if (invOpen == true)
         {
-            Debug.Log("Close Inv");
+            playerMovNew.animator.enabled = true;
+            playerMovNew.enabled = true;
+            tpsCam.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            inventory.SetActive(false);
             StartCoroutine(waitForNexInv(0.25f));
         }
     }
@@ -96,8 +106,11 @@ public class UiInputSys : MonoBehaviour
     }
     public void DontShowCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if(invOpen == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void PauseGame()
@@ -115,6 +128,7 @@ public class UiInputSys : MonoBehaviour
 
     public void PauseTime()
     {
+        playerMovNew.animator.enabled = false;
         playerMovNew.enabled = false;
         tpsCam.SetActive(false);
         pauseMenu.SetActive(true);
@@ -124,6 +138,7 @@ public class UiInputSys : MonoBehaviour
 
     public void ResumeTime()
     {
+        playerMovNew.animator.enabled = true;
         playerMovNew.enabled = true;
         tpsCam.SetActive(true);
         pauseMenu.SetActive(false);
@@ -134,5 +149,10 @@ public class UiInputSys : MonoBehaviour
     {
         ResumeTime();
         StartCoroutine(waitForNextPause(0.25f));
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
