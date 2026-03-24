@@ -9,6 +9,8 @@ public class pickUpObj : MonoBehaviour
 
     [SerializeField] private Animator playerAnim;
 
+    [SerializeField] CoinsSystem coinSys;
+
     private bool hiddenSafe;
 
     private void Start()
@@ -31,6 +33,7 @@ public class pickUpObj : MonoBehaviour
                 if(playerAnim.gameObject.GetComponent<PlayerMoveNew>().inFPS == false)
                 {
                     playerAnim.SetTrigger("pickUp");
+                    coinSys.AddCoins(10);
                 }
             }
         }
