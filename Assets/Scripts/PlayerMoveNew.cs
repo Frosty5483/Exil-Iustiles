@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -301,8 +301,21 @@ public class PlayerMoveNew : MonoBehaviour
         }
     }
 
+
     public void ActivateFirstPerson()
     {
+        Vector3 camForward = Camera.main.transform.forward;
+
+        float yaw = Mathf.Atan2(camForward.x, camForward.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+
+        xRotation = -Mathf.Asin(Mathf.Clamp(camForward.y, -1f, 1f)) * Mathf.Rad2Deg;
+        xRotation = Mathf.Clamp(xRotation, -85f, 85f);
+        playerHead.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        currentMouseDelta = Vector2.zero;
+        mouseDeltaVelocity = Vector2.zero;
+
         thirdPersonCam.gameObject.SetActive(false);
         firstPersonCam.enabled = true;
         inFPS = true;
@@ -315,6 +328,9 @@ public class PlayerMoveNew : MonoBehaviour
 
     public void ActivateThirdPerson()
     {
+        playerHead.localRotation = Quaternion.identity;
+        xRotation = 0f;
+
         thirdPersonCam.gameObject.SetActive(true);
         firstPersonCam.enabled = false;
         inFPS = false;
@@ -323,7 +339,5 @@ public class PlayerMoveNew : MonoBehaviour
             bodyMesh.enabled = true;
 
         animator.enabled = true;
-
-        playerHead.localRotation = Quaternion.identity;
     }
 }

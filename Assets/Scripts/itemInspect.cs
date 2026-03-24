@@ -6,9 +6,13 @@ public class itemInspect : MonoBehaviour
     [SerializeField] private TMP_Text hintText;
     [SerializeField] private GameObject bigItem;
     [SerializeField] private PlayerMoveNew playerMovNew;
+    [SerializeField] private bool inRange;
+
+    private bool inspecting;
 
     private void Start()
     {
+        inspecting = GameObject.FindGameObjectWithTag("InputSys").GetComponent<UiInputSys>().isInspecting;
         hintText.text = "";
         bigItem.SetActive(false);
     }
@@ -20,6 +24,8 @@ public class itemInspect : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
+                inspecting = true;
+                inRange = true;
                 playerMovNew.ActivateFirstPerson();
                 bigItem.SetActive(true);
                 
@@ -36,6 +42,8 @@ public class itemInspect : MonoBehaviour
             playerMovNew.enabled = false;
             if(Input.GetKey(KeyCode.Escape))
             {
+                inspecting = false;
+                inRange = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 playerMovNew.enabled = true;
@@ -49,9 +57,13 @@ public class itemInspect : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             hintText.text = "";
-
-            playerMovNew.ActivateThirdPerson();
-            bigItem.SetActive(false);
+            if(inRange == true)
+            {
+                inspecting = false;
+                inRange = false;
+                playerMovNew.ActivateThirdPerson();
+                bigItem.SetActive(false);
+            }
         }
     }
 }

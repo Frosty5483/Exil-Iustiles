@@ -25,10 +25,13 @@ public class pickUpObj : MonoBehaviour
             if (!hiddenSafe && Input.GetKey(KeyCode.F))
             {
                 hiddenSafe = true;
-                playerAnim.SetTrigger("pickUp");
                 hiddenSafe = false;
                 popTxt.text = "";
                 gameObject.SetActive(false);
+                if(playerAnim.gameObject.GetComponent<PlayerMoveNew>().inFPS == false)
+                {
+                    playerAnim.SetTrigger("pickUp");
+                }
             }
         }
     }

@@ -66,7 +66,7 @@ public class DialogueSysNew : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.F))
             StartDialogue(); 
 
         if (!dialogueCanvas.gameObject.activeSelf) return;

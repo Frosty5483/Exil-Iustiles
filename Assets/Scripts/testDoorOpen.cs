@@ -14,7 +14,7 @@ public class testDoorOpen : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            if(Input.GetKey(KeyCode.E))
+            if(Input.GetKey(KeyCode.F))
             {
                 blackAnim.SetBool("Black", true);
                 doorAnim.SetTrigger("Open");

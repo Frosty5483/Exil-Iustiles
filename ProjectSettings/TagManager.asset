@@ -8,6 +8,7 @@ TagManager:
   - nTxt
   - dTxt
   - dCam
+  - InputSys
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Wall
   - PlayerHead
   - InspectObject
-  - 
+  - CutScenes
   - 
   - 
   - 
