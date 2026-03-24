@@ -25,7 +25,7 @@ public class UiInputSys : MonoBehaviour
         {
             OpenQuestMenu();
         }
-        if (Input.GetKeyDown(KeyCode.H) && isInspecting == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && isInspecting == false)
         {
             PauseGame();
         }

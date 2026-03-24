@@ -21,7 +21,7 @@ public class DissolveTrigger : MonoBehaviour
         if (hasStarted)
             return;
 
-        if (other.CompareTag("Player") && !hasStarted)
+        if (other.tag == "Player" && !hasStarted)
         {
             hasStarted = true;
             animator.SetTrigger(dissolveTriggerName);
