@@ -20,8 +20,12 @@ public class DialogueLine
     [TextArea(2, 5)]
     public string mainText;
 
+    public AudioClip mainTClip;
+
     [TextArea(2, 5)]
     public string[] extraTexts;
+
+    public AudioClip[] extraTClips;
 
     public List<DialogueOption> options;
 }
@@ -46,6 +50,9 @@ public class DialogueSysNew : MonoBehaviour
     public Camera dialogueCamera;
     public Camera mainCamera;
     public Camera firstPersonCamera;
+
+    [Header("Audio")]
+    public AudioSource aS;
 
     [Header("Settings")]
     public float textSpeed = 0.04f;
@@ -141,12 +148,16 @@ public class DialogueSysNew : MonoBehaviour
         {
             mainTextShown = true;
             StartCoroutine(TypeText(line.mainText));
+            aS.Stop();
+            aS.clip = line.mainTClip; aS.Play();
             return;
         }
 
         if (line.extraTexts != null && currentExtraIndex < line.extraTexts.Length)
         {
             StartCoroutine(TypeText(line.extraTexts[currentExtraIndex]));
+            aS.Stop();
+            aS.clip = line.extraTClips[currentExtraIndex]; aS.Play();
             return;
         }
 
