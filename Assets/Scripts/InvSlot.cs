@@ -10,7 +10,9 @@ public class InvSlot : MonoBehaviour, IPointerExitHandler, IPointerClickHandler
     public bool isFilled;
 
     [SerializeField] GameObject toolTip;
-    [SerializeField] Sprite slotSprite;
+    public Sprite slotSprite;
+
+    public string toolTipTxt;
 
     private void Start()
     {
@@ -19,9 +21,11 @@ public class InvSlot : MonoBehaviour, IPointerExitHandler, IPointerClickHandler
 
     private void Update()
     {
-        if(selfImg.sprite == slotSprite)
+        
+
+        if (selfImg.sprite == slotSprite)
             isFilled = false;
-        else if(selfImg.sprite != slotSprite)
+        else if (selfImg.sprite != slotSprite)
             isFilled = true;
 
     }
@@ -30,13 +34,13 @@ public class InvSlot : MonoBehaviour, IPointerExitHandler, IPointerClickHandler
     {
         if (isFilled == true)
         {
-            toolTip.transform.position = Input.mousePosition + new Vector3(10, 10, 0);
+            toolTip.transform.position = Input.mousePosition + new Vector3(10, 15, 0);
             toolTip.SetActive(true);
-            toolTip.GetComponent<TMP_Text>().text = "";
+            toolTip.GetComponentInChildren<TMP_Text>().text = toolTipTxt;
         }
         if (isFilled == false)
         {
-            toolTip.transform.position = Input.mousePosition + new Vector3(10, 10, 0);
+            toolTip.transform.position = Input.mousePosition + new Vector3(10, 15, 0);
             toolTip.SetActive(true);
             toolTip.GetComponentInChildren<TMP_Text>().text = "This Slot is Empty";
         }

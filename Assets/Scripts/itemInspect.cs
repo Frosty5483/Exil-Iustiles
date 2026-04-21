@@ -8,6 +8,8 @@ public class itemInspect : MonoBehaviour
     [SerializeField] private PlayerMoveNew playerMovNew;
     [SerializeField] private bool inRange;
 
+    public InvSystem invSys;
+
     private bool inspecting;
 
     private void Start()
@@ -40,7 +42,7 @@ public class itemInspect : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             playerMovNew.enabled = false;
-            if(Input.GetKey(KeyCode.Escape))
+            if(Input.GetKey(KeyCode.Space)||Input.GetMouseButton(0))
             {
                 inspecting = false;
                 inRange = false;

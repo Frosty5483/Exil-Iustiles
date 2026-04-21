@@ -18,9 +18,16 @@ public class CutSceneManag : MonoBehaviour
 
     [SerializeField] LayerMask layerToShow;
 
+    [SerializeField] QuestSystem qSys;
+
     public List<Cutscenes> cutsceneList;
 
     int id = 0;
+
+    private void Start()
+    {
+        ShowCutScene();
+    }
 
     private void Update()
     {
@@ -59,6 +66,8 @@ public class CutSceneManag : MonoBehaviour
         else if (sceneI == cutsceneList.Count)
         {
             cutsceneList[sceneI - 1].scene.gameObject.SetActive(false);
+            inputSys.ResumeTime();
+            qSys.AddQuest(0);
         }
     }
 }
