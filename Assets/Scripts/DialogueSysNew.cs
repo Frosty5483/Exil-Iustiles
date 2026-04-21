@@ -58,7 +58,7 @@ public class DialogueSysNew : MonoBehaviour
     public float textSpeed = 0.04f;
 
     private int currentLineIndex;
-    private int currentExtraIndex;
+    private int currentExtraIndex; // -1 = on main text, 0+ = on that extra text
     private bool mainTextShown;
     private bool isTyping;
     private bool optionsShown;
@@ -74,7 +74,7 @@ public class DialogueSysNew : MonoBehaviour
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.F))
-            StartDialogue(); 
+            StartDialogue();
 
         if (!dialogueCanvas.gameObject.activeSelf) return;
 
@@ -108,7 +108,7 @@ public class DialogueSysNew : MonoBehaviour
         playerMoveNew.EnterDialogue();
         mainCamera?.gameObject.SetActive(false);
         firstPersonCamera?.gameObject.SetActive(false);
-        if(firstPersonCamera.enabled)
+        if (firstPersonCamera.enabled)
         {
             playerMoveNew.inFPS = true;
         }
@@ -133,7 +133,8 @@ public class DialogueSysNew : MonoBehaviour
 
     void ResetLineState()
     {
-        currentExtraIndex = 0;
+        // -1 means we are currently on the main text (no extra text shown yet)
+        currentExtraIndex = -1;
         mainTextShown = false;
         optionsShown = false;
     }
@@ -149,15 +150,19 @@ public class DialogueSysNew : MonoBehaviour
             mainTextShown = true;
             StartCoroutine(TypeText(line.mainText));
             aS.Stop();
-            aS.clip = line.mainTClip; aS.Play();
+            aS.clip = line.mainTClip;
+            aS.Play();
             return;
         }
 
-        if (line.extraTexts != null && currentExtraIndex < line.extraTexts.Length)
+        // currentExtraIndex >= 0 ensures we only enter this block after we've
+        // properly advanced past the main text
+        if (line.extraTexts != null && currentExtraIndex >= 0 && currentExtraIndex < line.extraTexts.Length)
         {
             StartCoroutine(TypeText(line.extraTexts[currentExtraIndex]));
             aS.Stop();
-            aS.clip = line.extraTClips[currentExtraIndex]; aS.Play();
+            aS.clip = line.extraTClips[currentExtraIndex];
+            aS.Play();
             return;
         }
 
@@ -167,8 +172,12 @@ public class DialogueSysNew : MonoBehaviour
     void AdvanceText()
     {
         DialogueLine line = dialogueLines[currentLineIndex];
+        bool hasExtras = line.extraTexts != null && line.extraTexts.Length > 0;
 
-        if (line.extraTexts != null && currentExtraIndex < line.extraTexts.Length)
+        // Increment first, then check if there is still an extra text to show.
+        // Coming from main text: -1 + 1 = 0  → shows extraTexts[0]
+        // Coming from extraTexts[i]: i + 1   → shows extraTexts[i+1] or options
+        if (hasExtras && currentExtraIndex < line.extraTexts.Length - 1)
         {
             currentExtraIndex++;
             ShowCurrentText();
@@ -194,7 +203,11 @@ public class DialogueSysNew : MonoBehaviour
 
         DialogueLine line = dialogueLines[currentLineIndex];
 
-        if (!optionsShown && (line.extraTexts == null || line.extraTexts.Length == 0))
+        // Auto-show options only after the very last text block has finished typing
+        bool isLastBlock = (line.extraTexts == null || line.extraTexts.Length == 0)
+                        || (currentExtraIndex == line.extraTexts.Length - 1);
+
+        if (!optionsShown && isLastBlock)
         {
             ShowOptions(line);
         }
@@ -206,16 +219,20 @@ public class DialogueSysNew : MonoBehaviour
 
         DialogueLine line = dialogueLines[currentLineIndex];
 
-        if (!mainTextShown)
-            dialogueText.text = line.mainText;
-        else if (line.extraTexts != null && currentExtraIndex < line.extraTexts.Length)
+        // currentExtraIndex == -1  →  we are skipping the main text
+        // currentExtraIndex >= 0   →  we are skipping one of the extra texts
+        if (currentExtraIndex >= 0 && line.extraTexts != null && currentExtraIndex < line.extraTexts.Length)
             dialogueText.text = line.extraTexts[currentExtraIndex];
         else
             dialogueText.text = line.mainText;
 
         isTyping = false;
 
-        if (!optionsShown && (line.extraTexts == null || line.extraTexts.Length == 0))
+        // Same "last block" rule as in TypeText
+        bool isLastBlock = (line.extraTexts == null || line.extraTexts.Length == 0)
+                        || (currentExtraIndex >= 0 && currentExtraIndex == line.extraTexts.Length - 1);
+
+        if (!optionsShown && isLastBlock)
         {
             ShowOptions(line);
         }
@@ -236,12 +253,31 @@ public class DialogueSysNew : MonoBehaviour
         {
             Button btn = Instantiate(optionButtonPrefab, optionsContainer);
             btn.GetComponentInChildren<TMP_Text>().text = option.optionText;
+            RectTransform rect = btn.GetComponent<RectTransform>();
+            rect.localScale = Vector3.one;
+            rect.localPosition = Vector3.zero;
+            StartCoroutine(ForceLayoutRebuild());
             btn.onClick.AddListener(() => SelectOption(option));
         }
 
         Button leaveBtn = Instantiate(optionButtonPrefab, optionsContainer);
         leaveBtn.GetComponentInChildren<TMP_Text>().text = "Ich habe es mir anders überlegt.";
+        RectTransform rect1 = leaveBtn.GetComponent<RectTransform>();
+        rect1.localScale = Vector3.one;
+        rect1.localPosition = Vector3.zero;
+        StartCoroutine(ForceLayoutRebuild());
         leaveBtn.onClick.AddListener(EndDialogue);
+    }
+
+    private IEnumerator ForceLayoutRebuild()
+    {
+        yield return new WaitForEndOfFrame();
+
+        LayoutGroup layoutGroup = optionsContainer.GetComponent<LayoutGroup>();
+        if (layoutGroup != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.GetComponent<RectTransform>());
+        }
     }
 
     void SelectOption(DialogueOption option)
