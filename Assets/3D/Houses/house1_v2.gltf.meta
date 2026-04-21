@@ -27,8 +27,13 @@ ScriptedImporter:
   assetDependencies:
   - type: 0
     originalUri: Assets\3D\Houses\house1_v2.bin
-    assetPath: Assets\3D\Houses\house1_v2.bin
+    assetPath: 
   - type: 1
     originalUri: Assets\3D\Houses\house1_bakev3.png
-    assetPath: Assets\3D\Houses\house1_bakev3.png
-  reportItems: []
+    assetPath: 
+  reportItems:
+  - type: 0
+    code: 8
+    messages:
+    - Cannot find resource at path Assets\3D\Houses\house1_v2.bin
+    - 0
