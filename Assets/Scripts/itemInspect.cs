@@ -10,6 +10,7 @@ public class itemInspect : MonoBehaviour
 
     public InvSystem invSys;
 
+    // unnützer bool
     private bool inspecting;
 
     private void Start()

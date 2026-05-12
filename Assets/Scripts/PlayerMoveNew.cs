@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
+using Unity.VisualScripting;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMoveNew : MonoBehaviour
@@ -76,6 +77,13 @@ public class PlayerMoveNew : MonoBehaviour
 
     void Update()
     {
+
+        if (thirdPersonCam == null)
+            thirdPersonCam = Utils.FindWithTagAcrossAllScenes("tpsCam").GetComponent<CinemachineCamera>();
+
+        if (thirdPersonCam.GetComponent<CinemachineCamera>().Target.TrackingTarget == null)
+            thirdPersonCam.GetComponent<CinemachineCamera>().Target.TrackingTarget = this.gameObject.transform;
+
         CheckGround();
 
         if (IsFirstPerson)

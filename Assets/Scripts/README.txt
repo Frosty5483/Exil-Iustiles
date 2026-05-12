@@ -1,1 +1,0 @@
-coin pickup system. also so random. wie vale es halt auch konzepiert hat und so. 

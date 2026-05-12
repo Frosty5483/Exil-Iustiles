@@ -113,12 +113,12 @@ TextureImporter:
       name: Image (4)_0
       rect:
         serializedVersion: 2
-        x: 700
+        x: 668
         y: 669
-        width: 251
+        width: 313
         height: 313
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -135,12 +135,12 @@ TextureImporter:
       name: Image (4)_1
       rect:
         serializedVersion: 2
-        x: 990
+        x: 961
         y: 664
-        width: 251
+        width: 293
         height: 431
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -157,12 +157,12 @@ TextureImporter:
       name: Image (4)_3
       rect:
         serializedVersion: 2
-        x: 1515
+        x: 1465
         y: 684
-        width: 164
+        width: 285
         height: 285
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,12 +179,12 @@ TextureImporter:
       name: Image (4)_4
       rect:
         serializedVersion: 2
-        x: 295
+        x: 272
         y: 670
-        width: 170
+        width: 230
         height: 230
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,12 +201,12 @@ TextureImporter:
       name: Image (4)_5
       rect:
         serializedVersion: 2
-        x: 519
-        y: 642
-        width: 145
-        height: 257
+        x: 468
+        y: 664
+        width: 235
+        height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -223,12 +223,12 @@ TextureImporter:
       name: Image (4)_6
       rect:
         serializedVersion: 2
-        x: 1302
+        x: 1261
         y: 683
-        width: 97
+        width: 169
         height: 169
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -245,12 +245,12 @@ TextureImporter:
       name: Image (4)_7
       rect:
         serializedVersion: 2
-        x: 315
+        x: 230
         y: 146
-        width: 150
+        width: 320
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -267,12 +267,12 @@ TextureImporter:
       name: Image (4)_8
       rect:
         serializedVersion: 2
-        x: 597
-        y: 165
-        width: 313
-        height: 272
+        x: 589
+        y: 136
+        width: 330
+        height: 330
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -290,11 +290,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 952
-        y: 158
-        width: 336
-        height: 283
+        y: 129
+        width: 343
+        height: 343
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -311,12 +311,12 @@ TextureImporter:
       name: Image (4)_10
       rect:
         serializedVersion: 2
-        x: 1348
+        x: 1320
         y: 118
-        width: 285
+        width: 361
         height: 361
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -335,10 +335,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1767
         y: 177
-        width: 288
+        width: 287
         height: 287
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

@@ -9,6 +9,11 @@ TagManager:
   - dTxt
   - dCam
   - InputSys
+  - tpsCam
+  - pauseMenu
+  - inventory
+  - openQuestMenu
+  - closedQuestMenu
   layers:
   - Default
   - TransparentFX

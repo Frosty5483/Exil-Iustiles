@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class UiInputSys : MonoBehaviour
@@ -7,25 +8,51 @@ public class UiInputSys : MonoBehaviour
     public bool isPaused;
     public bool invOpen;
     public bool questOpen;
+    public bool tpsCamEnabled;
 
-    [SerializeField] private PlayerMoveNew playerMovNew;
-    [SerializeField] private GameObject tpsCam;
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject inventory;
-    [SerializeField] private GameObject openQuestMenu;
-    [SerializeField] private GameObject closedQuestMenu;
+    public static Utils utils;
+
+    public PlayerMoveNew playerMovNew;
+    public GameObject tpsCam;
+    public GameObject pauseMenu;
+    public GameObject inventory;
+    public GameObject openQuestMenu;
+    public GameObject closedQuestMenu;
+    public bool viewOpen;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (playerMovNew == null)
+            playerMovNew = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoveNew>();
+
+        if (tpsCam == null)
+            tpsCam = GameObject.FindGameObjectWithTag("tpsCam");
+
+        if (pauseMenu == null)
+            pauseMenu = GameObject.FindGameObjectWithTag("pauseMenu");
+
+        if (inventory == null)
+            inventory = GameObject.FindGameObjectWithTag("inventory");
+
+        if (openQuestMenu == null)
+            openQuestMenu = GameObject.FindGameObjectWithTag("openQuestMenu");
+
+        if (closedQuestMenu == null)
+            closedQuestMenu = GameObject.FindGameObjectWithTag("closedQuestMenu");
+
+        if (playerMovNew.thirdPersonCam == null)
+            playerMovNew.thirdPersonCam = tpsCam.GetComponent<CinemachineCamera>();
+
+
+        if (Input.GetKeyDown(KeyCode.E) && isPaused != true && viewOpen != true)
         {
             OpenInventory();
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && isPaused != true && viewOpen != true)
         {
             OpenQuestMenu();
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && isInspecting == false)
+        if (Input.GetKeyDown(KeyCode.Escape) && isInspecting == false && invOpen != true && questOpen != true && viewOpen != true)
         {
             PauseGame();
         }
@@ -41,17 +68,17 @@ public class UiInputSys : MonoBehaviour
 
     }
 
-    private IEnumerator waitForNextPause(float waitingTime)
+    public IEnumerator waitForNextPause(float waitingTime)
     {
         yield return new WaitForSeconds(waitingTime);
         isPaused = !isPaused;
     }
-    private IEnumerator waitForNexInv(float waitingTime)
+    public IEnumerator waitForNexInv(float waitingTime)
     {
         yield return new WaitForSeconds(waitingTime);
         invOpen = !invOpen;
     }
-    private IEnumerator waitForNexQuest(float waitingTime)
+    public IEnumerator waitForNexQuest(float waitingTime)
     {
         yield return new WaitForSeconds(waitingTime);
         questOpen = !questOpen;
@@ -72,9 +99,13 @@ public class UiInputSys : MonoBehaviour
             
         if (invOpen == true)
         {
-            playerMovNew.animator.enabled = true;
+            
             playerMovNew.enabled = true;
-            tpsCam.SetActive(true);
+            if(playerMovNew.inFPS == false)
+            {
+                tpsCam.SetActive(true);
+                playerMovNew.animator.enabled = true;
+            }
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             inventory.SetActive(false);
@@ -138,9 +169,14 @@ public class UiInputSys : MonoBehaviour
 
     public void ResumeTime()
     {
-        playerMovNew.animator.enabled = true;
+        
         playerMovNew.enabled = true;
-        tpsCam.SetActive(true);
+        if(playerMovNew.inFPS == false)
+        {
+            tpsCam.SetActive(true);
+            playerMovNew.animator.enabled = true;
+        }
+        
         pauseMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

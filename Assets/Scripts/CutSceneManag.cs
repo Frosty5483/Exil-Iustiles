@@ -20,6 +20,8 @@ public class CutSceneManag : MonoBehaviour
 
     [SerializeField] QuestSystem qSys;
 
+    [SerializeField] GameObject skipButton;
+
     public List<Cutscenes> cutsceneList;
 
     int id = 0;
@@ -66,8 +68,27 @@ public class CutSceneManag : MonoBehaviour
         else if (sceneI == cutsceneList.Count)
         {
             cutsceneList[sceneI - 1].scene.gameObject.SetActive(false);
+            skipButton.SetActive(false);
             inputSys.ResumeTime();
             qSys.AddQuest(0);
+        }
+    }
+
+    public void SkipCutScenes()
+    {
+        StopAllCoroutines();
+
+        bool pressed = false;
+        for (int i = 0; i < cutsceneList.Count; i++)
+        {
+            cutsceneList[i].scene.gameObject.SetActive(false);
+            skipButton.SetActive(false);
+            inputSys.ResumeTime();
+            if(pressed == false)
+            {
+                qSys.AddQuest(0);
+            }
+            pressed = true;
         }
     }
 }
