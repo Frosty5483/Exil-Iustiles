@@ -1134,13 +1134,6 @@ Transform:
   - {fileID: 722026296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
---- !u!4 &374944248 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
-  m_PrefabInstance: {fileID: 1095688541}
-  m_PrefabAsset: {fileID: 0}
-=======
 --- !u!1 &342041499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1288,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> Stashed changes
 --- !u!1 &466593946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3471,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
+--- !u!4 &1095688542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
+  m_PrefabInstance: {fileID: 1095688541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1110376728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4043,7 +4040,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 374944248}
+  - {fileID: 1095688542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -40.23, z: 0}
 --- !u!1001 &1666037426
@@ -5598,8 +5595,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6301366909501755632, guid: 7d299a51470f50e41aef44fc6dc521dc, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1001 &2043132577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5655,6 +5650,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ab519f16848e58d4bb6afb9ba61bc022, type: 3}
       propertyPath: m_Name
       value: SchmiedExile
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab519f16848e58d4bb6afb9ba61bc022, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5913,7 +5912,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092674164}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &2105348658
 GameObject:
   m_ObjectHideFlags: 0
@@ -11031,8 +11029,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1657109340222192368}
-  - component: {fileID: 6825546818513607445}
   - component: {fileID: 4657407721902458399}
+  - component: {fileID: 4822830472263457022}
   m_Layer: 5
   m_Name: MapSpr
   m_TagString: Untagged
@@ -11040,6 +11038,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!222 &4822830472263457022
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4822830472263457021}
+  m_CullTransparentMesh: 1
 --- !u!223 &4855179005798815377
 Canvas:
   m_ObjectHideFlags: 0
@@ -12951,19 +12957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< Updated upstream
-  m_IsActive: 1
-=======
   m_IsActive: 0
---- !u!222 &6825546818513607445
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4822830472263457021}
-  m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!4 &6828810512276832566
 Transform:
   m_ObjectHideFlags: 0
@@ -15199,3 +15193,4 @@ SceneRoots:
   - {fileID: 1882960245}
   - {fileID: 1996915912}
   - {fileID: 401270167}
+  - {fileID: 2043132577}
