@@ -25,7 +25,7 @@ public class DoorNeedItem : MonoBehaviour
 
                 if (utils.hasIDCardFlint && utils.hasIDCardAric)
                 {
-                    //öffnen
+                    gameObject.GetComponentInParent<Animator>().SetBool("Open", true);
                 }
                 if ((utils.hasIDCardFlint && utils.hasIDCardAric == false) || (utils.hasIDCardAric && utils.hasIDCardFlint == false))
                 {

@@ -1,8 +1,6 @@
 voice line system hinzufügen
 
-in DoorNeedItem.cs noch machen. 
-
-Alle Dialoge einbauen. -> Dialogue system machen dass es mit mehreren geht.
+Alle Dialoge einbauen
 
 story abarbeiten.
 
