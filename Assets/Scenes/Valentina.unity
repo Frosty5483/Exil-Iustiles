@@ -4192,19 +4192,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.671
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.134
+      value: 0.04400003
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.925
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.58780247
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4212,7 +4212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8090045
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1907224310566283856, guid: 5a4a4d96087cb6e4bae2e711696c9d56, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5148,14 +5148,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643853367}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.34390557, z: 0, w: 0.9390043}
-  m_LocalPosition: {x: -21.54, y: -0.69, z: 4.06}
+  m_LocalRotation: {x: -0, y: -0.96180725, z: -0, w: 0.27372786}
+  m_LocalPosition: {x: -24.384026, y: -0.6, z: 14.654121}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1095688542}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -40.23, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -107.998, z: 0}
 --- !u!1001 &1685758219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9541,6 +9541,7 @@ MonoBehaviour:
   idleLookDelay: 5
   bodyMesh: {fileID: 4357635192256214829}
   inFPS: 0
+  inDialogue: 0
 --- !u!1 &2060867276096204937
 GameObject:
   m_ObjectHideFlags: 0
