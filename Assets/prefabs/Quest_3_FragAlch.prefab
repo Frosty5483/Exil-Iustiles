@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1206086021843975653}
   m_Layer: 5
-  m_Name: Quest_1_FlintBuero
-  m_TagString: q1
+  m_Name: Quest_3_FragAlch
+  m_TagString: q3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Finde Flint Rowans B\xFCro"
+  m_text: Frag den Alchemisten
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

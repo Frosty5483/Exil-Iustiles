@@ -7,18 +7,29 @@ public class Utils : MonoBehaviour
 {
     public static GameObject FindWithTagAcrossAllScenes(string tagName)
     {
+        // Search normal loaded scenes
         int sceneCount = SceneManager.sceneCount;
         for (int i = 0; i < sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
             if (!scene.isLoaded) continue;
-
             foreach (GameObject root in scene.GetRootGameObjects())
             {
                 GameObject found = FindInChildren(root.transform, tagName);
                 if (found != null) return found;
             }
         }
+
+        // Also search the DontDestroyOnLoad scene via the singleton's scene
+        if (Instance != null)
+        {
+            foreach (GameObject root in Instance.gameObject.scene.GetRootGameObjects())
+            {
+                GameObject found = FindInChildren(root.transform, tagName);
+                if (found != null) return found;
+            }
+        }
+
         return null;
     }
 
@@ -36,9 +47,9 @@ public class Utils : MonoBehaviour
 
     public static Utils Instance;
 
+
     void Start()
     {
-        
         if (Instance == null)
         {
             
@@ -47,10 +58,15 @@ public class Utils : MonoBehaviour
         else
         {
             
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        
     }
 
     [Header("INVENTORY ITEMS")]
@@ -61,6 +77,24 @@ public class Utils : MonoBehaviour
     [Header("Others")]
     public TMP_Text infoTxt;
 
+    public bool hasWatchedCutScenes;
+
+    public enum UtilsBoolField
+    {
+        hasIDCardFlint,
+        hasIDCardAric,
+        hasIDCardAlch
+    }
+
+    public void SetBool(UtilsBoolField field, bool value)
+    {
+        switch (field)
+        {
+            case UtilsBoolField.hasIDCardFlint: hasIDCardFlint = value; break;
+            case UtilsBoolField.hasIDCardAric: hasIDCardAric = value; break;
+            case UtilsBoolField.hasIDCardAlch: hasIDCardAlch = value; break;
+        }
+    }
 
     public IEnumerator InfoTextText(string text, Color color, float time)
     {

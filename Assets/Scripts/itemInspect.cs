@@ -10,12 +10,9 @@ public class itemInspect : MonoBehaviour
 
     public InvSystem invSys;
 
-    // unnützer bool
-    private bool inspecting;
 
     private void Start()
     {
-        inspecting = GameObject.FindGameObjectWithTag("InputSys").GetComponent<UiInputSys>().isInspecting;
         hintText.text = "";
         bigItem.SetActive(false);
     }
@@ -27,7 +24,6 @@ public class itemInspect : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                inspecting = true;
                 inRange = true;
                 playerMovNew.ActivateFirstPerson();
                 bigItem.SetActive(true);
@@ -45,7 +41,6 @@ public class itemInspect : MonoBehaviour
             playerMovNew.enabled = false;
             if(Input.GetKey(KeyCode.Space)||Input.GetMouseButton(0))
             {
-                inspecting = false;
                 inRange = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -62,7 +57,6 @@ public class itemInspect : MonoBehaviour
             hintText.text = "";
             if(inRange == true)
             {
-                inspecting = false;
                 inRange = false;
                 playerMovNew.ActivateThirdPerson();
                 bigItem.SetActive(false);

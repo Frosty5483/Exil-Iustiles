@@ -24,15 +24,37 @@ public class CutSceneManag : MonoBehaviour
 
     public List<Cutscenes> cutsceneList;
 
+    public GameObject player;
+
     int id = 0;
+
+    public Utils utils;
 
     private void Start()
     {
-        ShowCutScene();
+        player = Utils.FindWithTagAcrossAllScenes("Player");
+        utils = Utils.Instance;
+        if (utils.hasWatchedCutScenes == false)
+        {
+            skipButton.SetActive(true);
+            ShowCutScene(); 
+            utils.hasWatchedCutScenes = true;
+        }   
+        else
+        {
+            skipButton.SetActive(false);
+            player.transform.position = new Vector3(PlayerPrefs.GetFloat("playerX"), PlayerPrefs.GetFloat("playerY"), PlayerPrefs.GetFloat("playerZ"));
+            player.transform.rotation = Quaternion.Euler(PlayerPrefs.GetFloat("playerXR"), PlayerPrefs.GetFloat("playerYR"), PlayerPrefs.GetFloat("playerZR"));
+        }
+
+        
+
     }
 
     private void Update()
     {
+        player = Utils.FindWithTagAcrossAllScenes("Player");
+        utils = Utils.Instance;
         if (Input.GetKeyDown(KeyCode.P))
         {
             ShowCutScene();
@@ -41,6 +63,7 @@ public class CutSceneManag : MonoBehaviour
 
     public void ShowCutScene()
     {
+        
         StartCoroutine(waitForNextCutScene(id));
     }
 

@@ -1,6 +1,7 @@
-voice line system hinzufügen
-
 Alle Dialoge einbauen
+
+Alle quests in quest system hinzufügen
+gerade: alchemist
 
 story abarbeiten.
 

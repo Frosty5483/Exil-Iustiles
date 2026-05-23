@@ -17,6 +17,14 @@ public class pickUpObj : MonoBehaviour
     {
         popTxt.text = "";
         hiddenSafe = false;
+        if (!PlayerPrefs.HasKey("coin1"))
+        {
+            PlayerPrefs.SetInt("coin1", 0);
+        }
+        else if(PlayerPrefs.GetInt("coin1") == 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,6 +38,7 @@ public class pickUpObj : MonoBehaviour
                 hiddenSafe = false;
                 popTxt.text = "";
                 gameObject.SetActive(false);
+                PlayerPrefs.SetInt("coin1", 1);
                 if(playerAnim.gameObject.GetComponent<PlayerMoveNew>().inFPS == false)
                 {
                     playerAnim.SetTrigger("pickUp");

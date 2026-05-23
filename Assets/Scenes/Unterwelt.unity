@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnim: {fileID: 1128851360}
-  blackAnim: {fileID: 0}
+  blackAnim: {fileID: 3092517295875739933}
   nextSceneName: Bar
 --- !u!1 &2094586145 stripped
 GameObject:
@@ -2612,6 +2612,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebbf860aa6912b444b03d451905cdc6d, type: 3}
+--- !u!95 &3092517295875739933 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9212394874270122151, guid: ebbf860aa6912b444b03d451905cdc6d, type: 3}
+  m_PrefabInstance: {fileID: 3092517295875739932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3335636446494224465
 PrefabInstance:
   m_ObjectHideFlags: 0

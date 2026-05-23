@@ -50,6 +50,9 @@ public class PlayerMoveNew : MonoBehaviour
     [Header("Others")]
     public bool inFPS;
 
+    
+
+
     Vector3 velocity;
     Vector2 currentMouseDelta;
     Vector2 mouseDeltaVelocity;
@@ -78,8 +81,8 @@ public class PlayerMoveNew : MonoBehaviour
     void Update()
     {
 
-        if (thirdPersonCam == null)
-            thirdPersonCam = Utils.FindWithTagAcrossAllScenes("tpsCam").GetComponent<CinemachineCamera>();
+        thirdPersonCam = Utils.FindWithTagAcrossAllScenes("tpsCam").GetComponent<CinemachineCamera>();
+
 
         if (thirdPersonCam.GetComponent<CinemachineCamera>().Target.TrackingTarget == null)
             thirdPersonCam.GetComponent<CinemachineCamera>().Target.TrackingTarget = this.gameObject.transform;
@@ -178,7 +181,7 @@ public class PlayerMoveNew : MonoBehaviour
         bool moving = input.sqrMagnitude > 0.01f;
         bool running = Input.GetKey(KeyCode.LeftShift);
 
-        Transform cam = Camera.main.transform;
+        Transform cam = Utils.FindWithTagAcrossAllScenes("MainCamera").GetComponent<Transform>();
         Vector3 camForward = Vector3.Scale(cam.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 camRight = cam.right;
 

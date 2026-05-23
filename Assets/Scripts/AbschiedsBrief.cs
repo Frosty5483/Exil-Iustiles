@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static Utils;
 
 public class AbschiedsBrief : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class AbschiedsBrief : MonoBehaviour
 
     bool gaveItem = false;
 
+    public UtilsBoolField targetBool;
+
     private void Update()
     {
         if (gameObject.activeSelf && gaveItem == false)
@@ -23,12 +26,10 @@ public class AbschiedsBrief : MonoBehaviour
             slot.GetComponent<Image>().sprite = item;
             slot.GetComponent<Image>().color = Color.white;
             slot.GetComponent<InvSlot>().toolTipTxt = toolTipTxt;
+
             slot.GetComponent<InvSlot>().bigItemSprite = otherSideItem;
-
-
-
-
             gaveItem = true;
+            Utils.Instance.SetBool(targetBool, true);
         }
     }
 }

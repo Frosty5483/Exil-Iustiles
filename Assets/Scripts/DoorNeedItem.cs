@@ -6,21 +6,52 @@ public class DoorNeedItem : MonoBehaviour
 
     public Utils utils;
 
+    public AcrossSceneVars vars;
+
+    public QuestSystem qSys;
+
     private bool notPressAgain;
 
     public Color infoTxtColor;
 
+    private bool noNewQuest;
+
+
+
     private void Start()
     {
-        utils = Utils.FindWithTagAcrossAllScenes("Utils").GetComponent<Utils>();
-        
+        utils = Utils.Instance;
+
+        vars = AcrossSceneVars.Instance;
+
+        qSys = Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>();
+
+    }
+
+    private void Update()
+    {
+        utils = Utils.Instance;
+
+        vars = AcrossSceneVars.Instance;
+
+        qSys = Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>();
     }
     private void OnTriggerStay(Collider collision)
     {
+
         if(collision.transform.tag == "Player")
         {
             if(Input.GetKey(KeyCode.F) && notPressAgain == false)
             {
+                vars.findFlintBur = true;
+                
+                if(noNewQuest == false)
+                {
+                    qSys.AddQuest(1);
+                    noNewQuest = true;
+                }
+                
+
                 StartCoroutine(cor());
 
                 if (utils.hasIDCardFlint && utils.hasIDCardAric)

@@ -71,10 +71,12 @@ public class DialogueSysNew : MonoBehaviour
     void Start()
     {
         dialogueCanvas.gameObject.SetActive(false);
+        mainCamera = Utils.FindWithTagAcrossAllScenes("MainCamera").GetComponent<Camera>();
     }
 
     void Update()
     {
+        mainCamera = Utils.FindWithTagAcrossAllScenes("MainCamera").GetComponent<Camera>();
         if (playerInRange && Input.GetKeyDown(KeyCode.F) && activeDialogue == null)
             StartDialogue();
 
