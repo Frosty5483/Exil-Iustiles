@@ -129,7 +129,13 @@ public class DialogueSysNew : MonoBehaviour
         Cursor.visible = true;
 
         dialogueCanvas.gameObject.SetActive(true);
+
         nameText.text = npcName;
+
+        
+        nameText.gameObject.GetComponentInParent<RectTransform>().localScale = Vector3.one;
+        nameText.gameObject.GetComponentInParent<RectTransform>().localPosition = Vector3.zero;
+        StartCoroutine(ForceLayoutRebuild(nameText.transform.parent.transform.parent.GetComponent<LayoutGroup>()));
 
         currentLineIndex = 0;
         ResetLineState();
@@ -262,7 +268,7 @@ public class DialogueSysNew : MonoBehaviour
             RectTransform rect = btn.GetComponent<RectTransform>();
             rect.localScale = Vector3.one;
             rect.localPosition = Vector3.zero;
-            StartCoroutine(ForceLayoutRebuild());
+            StartCoroutine(ForceLayoutRebuild(optionsContainer.GetComponent<LayoutGroup>()));
             btn.onClick.AddListener(() => SelectOption(option));
         }
 
@@ -271,15 +277,15 @@ public class DialogueSysNew : MonoBehaviour
         RectTransform rect1 = leaveBtn.GetComponent<RectTransform>();
         rect1.localScale = Vector3.one;
         rect1.localPosition = Vector3.zero;
-        StartCoroutine(ForceLayoutRebuild());
+        StartCoroutine(ForceLayoutRebuild(optionsContainer.GetComponent<LayoutGroup>()));
         leaveBtn.onClick.AddListener(EndDialogue);
     }
 
-    private IEnumerator ForceLayoutRebuild()
+    private IEnumerator ForceLayoutRebuild(LayoutGroup layoutGroup)
     {
         yield return new WaitForEndOfFrame();
 
-        LayoutGroup layoutGroup = optionsContainer.GetComponent<LayoutGroup>();
+        
         if (layoutGroup != null)
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroup.GetComponent<RectTransform>());
