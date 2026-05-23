@@ -54,7 +54,7 @@ public class PlayerMoveNew : MonoBehaviour
     Vector2 currentMouseDelta;
     Vector2 mouseDeltaVelocity;
 
-    bool inDialogue;
+    public bool inDialogue;
 
     bool isGrounded;
     bool isJumping;

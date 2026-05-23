@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,4 +33,42 @@ public class Utils : MonoBehaviour
         }
         return null;
     }
+
+    public static Utils Instance;
+
+    void Start()
+    {
+        
+        if (Instance == null)
+        {
+            
+            Instance = this;
+        }
+        else
+        {
+            
+            Destroy(this);
+        }
+        
+        DontDestroyOnLoad(gameObject);
+    }
+
+    [Header("INVENTORY ITEMS")]
+    public bool hasIDCardFlint;
+    public bool hasIDCardAric;
+    public bool hasIDCardAlch;
+
+    [Header("Others")]
+    public TMP_Text infoTxt;
+
+
+    public IEnumerator InfoTextText(string text, Color color, float time)
+    {
+        infoTxt.text = text;
+        infoTxt.color = color;
+        infoTxt.gameObject.SetActive(true);
+        yield return new WaitForSeconds(time);
+        infoTxt.gameObject.SetActive(false);
+    }
+
 }

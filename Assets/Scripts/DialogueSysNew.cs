@@ -57,6 +57,8 @@ public class DialogueSysNew : MonoBehaviour
     [Header("Settings")]
     public float textSpeed = 0.04f;
 
+    private static DialogueSysNew activeDialogue;
+
     private int currentLineIndex;
     private int currentExtraIndex; // -1 = on main text, 0+ = on that extra text
     private bool mainTextShown;
@@ -73,10 +75,12 @@ public class DialogueSysNew : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.F))
+        if (playerInRange && Input.GetKeyDown(KeyCode.F) && activeDialogue == null)
             StartDialogue();
 
         if (!dialogueCanvas.gameObject.activeSelf) return;
+
+        if (activeDialogue != this) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -105,6 +109,8 @@ public class DialogueSysNew : MonoBehaviour
 
     void StartDialogue()
     {
+        activeDialogue = this;
+
         playerMoveNew.EnterDialogue();
         mainCamera?.gameObject.SetActive(false);
         firstPersonCamera?.gameObject.SetActive(false);
@@ -305,6 +311,8 @@ public class DialogueSysNew : MonoBehaviour
 
     void EndDialogue()
     {
+        activeDialogue = null;
+
         dialogueCanvas.gameObject.SetActive(false);
 
         dialogueCamera?.gameObject.SetActive(false);
