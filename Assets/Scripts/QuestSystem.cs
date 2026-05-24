@@ -32,5 +32,20 @@ public class QuestSystem : MonoBehaviour
         {
             Utils.FindWithTagAcrossAllScenes("q2").GetComponentInChildren<Toggle>().isOn = true;
         }
+
+        if(vars.askAlch == true)
+        {
+            Utils.FindWithTagAcrossAllScenes("q3").GetComponentInChildren<Toggle>().isOn = true;
+        }
+
+        if(vars.searchAlchRoom == true)
+        {
+            Utils.FindWithTagAcrossAllScenes("q4").GetComponentInChildren<Toggle>().isOn = true;
+        }
+
+        if(vars.giveIdBack == true)
+        {
+            Utils.FindWithTagAcrossAllScenes("q5").GetComponentInChildren<Toggle>().isOn = true;
+        }
     }
 }

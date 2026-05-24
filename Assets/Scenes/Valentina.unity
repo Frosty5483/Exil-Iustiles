@@ -4593,6 +4593,7 @@ MonoBehaviour:
   blackAnim: {fileID: 2154258900594284907}
   uI: {fileID: 0}
   player: {fileID: 0}
+  vars: {fileID: 0}
   nextSceneName: Bar
 --- !u!65 &1449011681
 BoxCollider:
@@ -6752,6 +6753,7 @@ GameObject:
   - component: {fileID: 1989101901}
   - component: {fileID: 1989101904}
   - component: {fileID: 1989101905}
+  - component: {fileID: 1989101906}
   m_Layer: 0
   m_Name: Sera
   m_TagString: Untagged
@@ -6780,15 +6782,30 @@ MonoBehaviour:
     - "Die ganze Stadt redet inzwischen wieder dar\xFCber."
     extraTClips: []
     options:
-    - optionText: Das versuche ich herauszufinden. Du hast ihn gekannt?
+    - optionText: ...
       nextDialogueIndex: 1
+  - mainText: ...
+    mainTClip: {fileID: 8300000, guid: 1dd94813958483a419879e4ec7022e04, type: 3}
+    extraTexts: []
+    extraTClips: []
+    options:
+    - optionText: ...
+      nextDialogueIndex: 2
   - mainText: "Jeder hat ihn gekannt, er war wie eine Ber\xFChmtheit!"
     mainTClip: {fileID: 0}
     extraTexts: []
     extraTClips: []
     options:
-    - optionText: Wann hast du ihn zu letzt gesehen?
-      nextDialogueIndex: 2
+    - optionText: ...
+      nextDialogueIndex: 3
+  - mainText: ...
+    mainTClip: {fileID: 8300000, guid: 216aa31452b168745b923491b16f7629, type: 3}
+    extraTexts:
+    - Vielleicht findest du dort seinen Namen.
+    extraTClips: []
+    options:
+    - optionText: ...
+      nextDialogueIndex: 4
   - mainText: "Du meine G\xFCte, das ist zu lange her...Aber du kannst einen Blick
       in mein Kundenbuch werfen, dort verzeichne ich alle Verk\xE4ufe."
     mainTClip: {fileID: 0}
@@ -6966,6 +6983,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.06, y: -0.15, z: 0}
+--- !u!114 &1989101906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989101900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca0fe60dc688434ab4ac777fb6d8f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog1: {fileID: 0}
+  vars: {fileID: 0}
+  utils: {fileID: 0}
 --- !u!1 &1994934030
 GameObject:
   m_ObjectHideFlags: 0
@@ -7090,6 +7122,7 @@ MonoBehaviour:
   blackAnim: {fileID: 2154258900594284907}
   uI: {fileID: 0}
   player: {fileID: 0}
+  vars: {fileID: 0}
   nextSceneName: Forsch
 --- !u!1 &1996915909
 GameObject:
@@ -7594,7 +7627,7 @@ GameObject:
   - component: {fileID: 2105348659}
   m_Layer: 0
   m_Name: InvSys
-  m_TagString: Untagged
+  m_TagString: InvSys
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15112,6 +15145,9 @@ MonoBehaviour:
   - {fileID: 1389859934079048852, guid: e82533aca13aad44393c19847090ed27, type: 3}
   - {fileID: 1389859934079048852, guid: e163b12f2a52dc84f8968e7d79b85ff8, type: 3}
   - {fileID: 1389859934079048852, guid: 77c1641d72a2661449406defceb1c51d, type: 3}
+  - {fileID: 1389859934079048852, guid: f94377bfeb33d704bafd17a169abd4bd, type: 3}
+  - {fileID: 1389859934079048852, guid: 030fd917b8d6e2b41b2f8e161a3c1d7d, type: 3}
+  - {fileID: 1389859934079048852, guid: 3bbb6f8a55bd01c429f9b7b3f6a13175, type: 3}
   vars: {fileID: 0}
 --- !u!223 &7784840460917537766
 Canvas:
@@ -15812,8 +15848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invSys: {fileID: 2105348659}
-  item: {fileID: -298431753, guid: a07c33f4c64cf9941ac128d1af61c176, type: 3}
-  otherSideItem: {fileID: -380629143, guid: a07c33f4c64cf9941ac128d1af61c176, type: 3}
+  item: {fileID: 1571404638, guid: 3e89585271bef7e4582e427a3ef2ed53, type: 3}
+  otherSideItem: {fileID: 48193264, guid: 3e89585271bef7e4582e427a3ef2ed53, type: 3}
   toolTipTxt: "ID f\xFCr Flint Rowan von Sanctum Vitae"
   targetBool: 0
 --- !u!224 &8588901573669780676
