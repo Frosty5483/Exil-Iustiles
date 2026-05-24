@@ -26,6 +26,14 @@ public class DoorNeedItem : MonoBehaviour
 
         qSys = Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>();
 
+        if (PlayerPrefs.HasKey("AddedQuestToAsk"))
+        {
+            if(PlayerPrefs.GetInt("AddedQuestToAsk") == 1)
+            {
+                noNewQuest = true;
+            }
+        }
+
     }
 
     private void Update()
@@ -47,6 +55,7 @@ public class DoorNeedItem : MonoBehaviour
                 
                 if(noNewQuest == false)
                 {
+                    PlayerPrefs.SetInt("AddedQuestToAsk", 1);
                     qSys.AddQuest(1);
                     noNewQuest = true;
                 }

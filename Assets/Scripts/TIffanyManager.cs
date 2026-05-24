@@ -27,6 +27,24 @@ public class TIffanyManager : MonoBehaviour
     {
         vars = AcrossSceneVars.Instance;
         dialog2.enabled = false;
+
+        if (PlayerPrefs.HasKey("AskCityDone"))
+        {
+            if(PlayerPrefs.GetInt("AskCityDone") == 1)
+            {
+                npcAskingDone = true;
+                done1 = true;
+                done2 = true;
+                done3 = true;
+                addedQ = true;
+                if (dialog1 != null)
+                {
+                    Destroy(dialog1);
+                }
+                dialog2.enabled = true;
+                canNoMore = true;
+            }
+        }
     }
 
     private void Update()
@@ -45,6 +63,8 @@ public class TIffanyManager : MonoBehaviour
             Destroy(dialog1);
             dialog2.enabled = true;
             addedQ = true;
+
+            PlayerPrefs.SetInt("AskCityDone", 1);
             
         }
 

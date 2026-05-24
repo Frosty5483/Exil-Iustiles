@@ -29,17 +29,41 @@ public class AlchemistManag : MonoBehaviour
     private bool addedQ;
     private bool addedQ1;
 
-    private void Awake()
-    {
-        dialog2.enabled = false;
-        //dialog3.enabled = false;
-    }
-
     private void Start()
     {
         utils = Utils.Instance;
         vars = AcrossSceneVars.Instance;
-        
+
+        if (PlayerPrefs.HasKey("AlchDone1"))
+        {
+            if(PlayerPrefs.GetInt("AlchDone1") == 1)
+            {
+                addedQ = true;
+                npcAskingDone = true;
+            }
+        }
+        if (PlayerPrefs.HasKey("AlchDone2"))
+        {
+            if (PlayerPrefs.GetInt("AlchDone2") == 1)
+            {
+                addedQ1 = true;
+                dialog2.enabled = true;
+                if(dialog1 != null)
+                {
+                    Destroy(dialog1);
+                    firstThingDone = true;
+                }
+            }
+        }
+        if (PlayerPrefs.HasKey("AlchDone3"))
+        {
+            if (PlayerPrefs.GetInt("AlchDone3") == 1)
+            {
+                secondThingDone = true;
+                
+            }
+        }
+
     }
 
     private void Update()
@@ -51,17 +75,20 @@ public class AlchemistManag : MonoBehaviour
         {
             addedQ = true;
             Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>().AddQuest(3);
+            PlayerPrefs.SetInt("AlchDone1", 1);
             vars.askAlch = true;
         }
 
         if(utils.hasIDCardAlch == true)
         {
             vars.searchAlchRoom = true;
+            
         }
 
         if (vars.searchAlchRoom == true && addedQ1 == false)
         {
             Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>().AddQuest(4);
+            PlayerPrefs.SetInt("AlchDone2", 1);
             //zimmer durchforsten quest
             Destroy(dialog1);
             firstThingDone = true;
@@ -80,6 +107,7 @@ public class AlchemistManag : MonoBehaviour
         if(isIn1 && isOut1 && didPress1 && secondThingDone == false)
         {
             Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>().AddQuest(5);
+            PlayerPrefs.SetInt("AlchDone3", 1);
             vars.giveIdBack = true;
             secondThingDone = true;
             //250 münzen auftrag quest

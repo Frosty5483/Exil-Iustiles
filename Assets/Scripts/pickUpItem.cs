@@ -31,6 +31,16 @@ public class pickUpItem : MonoBehaviour
         utils = Utils.Instance;
         invSys = Utils.FindWithTagAcrossAllScenes("InvSys").GetComponent<InvSystem>();
         popTxt.text = "";
+
+        if (PlayerPrefs.HasKey("AlchIDPick"))
+        {
+            if(PlayerPrefs.GetInt("AlchIDPick") == 1)
+            {
+                gaveItem = true;
+                popTxt.text = "";
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -58,6 +68,7 @@ public class pickUpItem : MonoBehaviour
                 }
 
                 gameObject.SetActive(false);
+                PlayerPrefs.SetInt("AlchIDPick", 1);
                 StartCoroutine(cor());
             }
         }

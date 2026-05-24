@@ -15,6 +15,15 @@ public class DissolveTrigger : MonoBehaviour
 
     private bool hasStarted = false;
 
+    private void Update()
+    {
+        if(PlayerPrefs.GetInt("dissolved") == 1)
+        {
+            hasStarted = true;
+            objectToDisable.SetActive(false);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,5 +42,6 @@ public class DissolveTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(animationLength);
         objectToDisable.SetActive(false);
+        PlayerPrefs.SetInt("dissolved", 1);
     }
 }

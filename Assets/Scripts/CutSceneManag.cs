@@ -94,6 +94,7 @@ public class CutSceneManag : MonoBehaviour
             skipButton.SetActive(false);
             inputSys.ResumeTime();
             qSys.AddQuest(0);
+            PlayerPrefs.SetInt("FirstQuest", 1);
         }
     }
 
@@ -110,6 +111,7 @@ public class CutSceneManag : MonoBehaviour
             if(pressed == false)
             {
                 qSys.AddQuest(0);
+                PlayerPrefs.SetInt("FirstQuest", 1);
             }
             pressed = true;
         }

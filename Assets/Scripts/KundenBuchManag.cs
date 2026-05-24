@@ -18,6 +18,14 @@ public class KundenBuchManag : MonoBehaviour
         inputSys = GameObject.FindGameObjectWithTag("InputSys").GetComponent<UiInputSys>();
     }
 
+    private void Update()
+    {
+        if (PlayerPrefs.GetInt("gotFlint") == 1)
+        {
+            gotFlint = true;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.transform.tag == "Player")
@@ -76,6 +84,7 @@ public class KundenBuchManag : MonoBehaviour
             aS.Play();
             gotFlint = true;
             vars.searchInSera = true;
+            PlayerPrefs.SetInt("gotFlint", 1);
         }
         
     }

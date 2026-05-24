@@ -31,6 +31,19 @@ public class SeraManag : MonoBehaviour
         vars = AcrossSceneVars.Instance;
         dialog1.enabled = false;
         tempText.SetActive(false);
+
+        if (PlayerPrefs.HasKey("SeraAddedBookQuest"))
+        {
+            if(PlayerPrefs.GetInt("SeraAddedBookQuest") == 1)
+            {
+                firstThingDone = true;
+                dialog1.enabled = true;
+                tempText.SetActive(false);
+                addedQ = true;
+                boxCollider.enabled = false;
+                canNoMore = true;
+            }
+        }
     }
 
     private void Update()
@@ -42,12 +55,14 @@ public class SeraManag : MonoBehaviour
         {
             tempText.SetActive(true);
             dialog1.enabled = true;
+
         }
 
         if (firstThingDone == true && addedQ == false)
         {
             Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>().AddQuest(6);
             //Search kundenbuch quest
+            PlayerPrefs.SetInt("SeraAddedBookQuest", 1);
 
             buchActive = true;
 

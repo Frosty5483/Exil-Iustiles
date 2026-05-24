@@ -66,7 +66,42 @@ public class Utils : MonoBehaviour
 
     private void Update()
     {
-        
+        if(PlayerPrefs.GetInt("IDFlint") == 1)
+        {
+            hasIDCardFlint = true;
+        }
+        if (hasIDCardFlint)
+        {
+            PlayerPrefs.SetInt("IDFlint", 1);
+        }
+        if (PlayerPrefs.GetInt("IDAric") == 1)
+        {
+            hasIDCardAric = true;
+        }
+        if (hasIDCardAric)
+        {
+            PlayerPrefs.SetInt("IDAric", 1);
+
+        }
+        if (PlayerPrefs.GetInt("IDAlch") == 1)
+        {
+            hasIDCardAlch = true;
+        }
+        if (hasIDCardAlch)
+        {
+            PlayerPrefs.SetInt("IDAlch", 1);
+
+        }
+
+        if(PlayerPrefs.GetInt("HasWatched") == 1)
+        {
+            hasWatchedCutScenes = true;
+        }
+
+        if (hasWatchedCutScenes)
+        {
+            PlayerPrefs.SetInt("HasWatched", 1);
+        }
     }
 
     [Header("INVENTORY ITEMS")]

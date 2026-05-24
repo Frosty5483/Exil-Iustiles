@@ -4303,6 +4303,7 @@ MonoBehaviour:
   - {fileID: 497019208}
   aS: {fileID: 1989101904}
   clip: {fileID: 8300000, guid: 9a1e3e519bbe89645b1868336cd34899, type: 3}
+  vars: {fileID: 0}
 --- !u!1 &921276347
 GameObject:
   m_ObjectHideFlags: 0
@@ -8193,10 +8194,11 @@ MonoBehaviour:
   dialogueLines:
   - mainText: "Ich habe geh\xF6rt du bist Flints Sohn...Wei\xDFt du wohin er verschwunden
       ist?"
-    mainTClip: {fileID: 0}
+    mainTClip: {fileID: 8300000, guid: 30eff36396f590a4e9051e0e001279f3, type: 3}
     extraTexts:
     - "Die ganze Stadt redet inzwischen wieder dar\xFCber."
-    extraTClips: []
+    extraTClips:
+    - {fileID: 8300000, guid: 60986a16ff18b014387193d1bc190b7c, type: 3}
     options:
     - optionText: ...
       nextDialogueIndex: 1
@@ -8208,7 +8210,7 @@ MonoBehaviour:
     - optionText: ...
       nextDialogueIndex: 2
   - mainText: "Jeder hat ihn gekannt, er war wie eine Ber\xFChmtheit!"
-    mainTClip: {fileID: 0}
+    mainTClip: {fileID: 8300000, guid: e95b79a45beb6e5488ca46fd28689843, type: 3}
     extraTexts: []
     extraTClips: []
     options:
@@ -8216,18 +8218,20 @@ MonoBehaviour:
       nextDialogueIndex: 3
   - mainText: ...
     mainTClip: {fileID: 8300000, guid: 216aa31452b168745b923491b16f7629, type: 3}
-    extraTexts:
-    - Vielleicht findest du dort seinen Namen.
+    extraTexts: []
     extraTClips: []
     options:
     - optionText: ...
       nextDialogueIndex: 4
-  - mainText: "Du meine G\xFCte, das ist zu lange her...Aber du kannst einen Blick
-      in mein Kundenbuch werfen, dort verzeichne ich alle Verk\xE4ufe."
-    mainTClip: {fileID: 0}
+  - mainText: "Du meine G\xFCte, das ist zu lange her..."
+    mainTClip: {fileID: 8300000, guid: 8e4dfc02491ceee4c95e9069204258ac, type: 3}
     extraTexts:
+    - "Aber du kannst einen Blick in mein Kundenbuch werfen, dort verzeichne ich
+      alle Verk\xE4ufe."
     - Vielleicht findest du dort seinen Namen.
-    extraTClips: []
+    extraTClips:
+    - {fileID: 8300000, guid: 0fb0282e59c1f614a98de903513c5389, type: 3}
+    - {fileID: 8300000, guid: 2a7a20874e8686e4480332e57e499eef, type: 3}
     options: []
   playerMoveNew: {fileID: 2034065699382938694}
   dialogueCanvas: {fileID: 4855179005798815377}

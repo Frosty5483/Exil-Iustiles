@@ -11,6 +11,17 @@ public class SaeuferManag : MonoBehaviour
 
     public TIffanyManager tif;
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("AskCityDone"))
+        {
+            if(PlayerPrefs.GetInt("AskCityDone") == 1)
+            {
+                canNoMore = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.transform.tag == "Player")
