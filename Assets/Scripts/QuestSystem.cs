@@ -47,5 +47,15 @@ public class QuestSystem : MonoBehaviour
         {
             Utils.FindWithTagAcrossAllScenes("q5").GetComponentInChildren<Toggle>().isOn = true;
         }
+
+        if (vars.earn250Coins == true)
+        {
+            Utils.FindWithTagAcrossAllScenes("q6").GetComponentInChildren<Toggle>().isOn = true;
+        }
+
+        if (vars.searchInSera == true)
+        {
+            Utils.FindWithTagAcrossAllScenes("q7").GetComponentInChildren<Toggle>().isOn = true;
+        }
     }
 }

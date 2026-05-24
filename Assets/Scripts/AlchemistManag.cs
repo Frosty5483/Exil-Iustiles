@@ -32,7 +32,7 @@ public class AlchemistManag : MonoBehaviour
     private void Awake()
     {
         dialog2.enabled = false;
-        dialog3.enabled = false;
+        //dialog3.enabled = false;
     }
 
     private void Start()
@@ -49,10 +49,9 @@ public class AlchemistManag : MonoBehaviour
 
         if (npcAskingDone == true && addedQ == false)
         {
+            addedQ = true;
             Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>().AddQuest(3);
             vars.askAlch = true;
-            addedQ = true;
-
         }
 
         if(utils.hasIDCardAlch == true)

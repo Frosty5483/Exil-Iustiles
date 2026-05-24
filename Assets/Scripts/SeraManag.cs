@@ -5,6 +5,8 @@ public class SeraManag : MonoBehaviour
 {
     public DialogueSysNew dialog1;
 
+    public GameObject tempText;
+
     private bool isIn;
     private bool isOut;
     private bool didPress;
@@ -15,15 +17,20 @@ public class SeraManag : MonoBehaviour
 
     public AcrossSceneVars vars;
 
+    public BoxCollider boxCollider;
+
     public Utils utils;
 
     private bool addedQ;
+
+    public bool buchActive;
 
     private void Start()
     {
         utils = Utils.Instance;
         vars = AcrossSceneVars.Instance;
-
+        dialog1.enabled = false;
+        tempText.SetActive(false);
     }
 
     private void Update()
@@ -31,11 +38,21 @@ public class SeraManag : MonoBehaviour
         utils = Utils.Instance;
         vars = AcrossSceneVars.Instance;
 
+        if (vars.giveIdBack == true && firstThingDone == false)
+        {
+            tempText.SetActive(true);
+            dialog1.enabled = true;
+        }
+
         if (firstThingDone == true && addedQ == false)
         {
             Utils.FindWithTagAcrossAllScenes("qSys").GetComponent<QuestSystem>().AddQuest(6);
             //Search kundenbuch quest
 
+            buchActive = true;
+
+            boxCollider.enabled = false;
+            tempText.SetActive(false);
             addedQ = true;
         }
 
@@ -51,7 +68,7 @@ public class SeraManag : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.tag == "Player")
+        if (other.gameObject.transform.tag == "Player" && dialog1.enabled)
         {
             if (firstThingDone == false)
             {
@@ -63,7 +80,7 @@ public class SeraManag : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.transform.tag == "Player")
+        if (other.gameObject.transform.tag == "Player" && dialog1.enabled)
         {
             if (Input.GetKey(KeyCode.F))
             {
@@ -78,7 +95,7 @@ public class SeraManag : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.transform.tag == "Player")
+        if (other.gameObject.transform.tag == "Player" && dialog1.enabled)
         {
             if (firstThingDone == false)
             {

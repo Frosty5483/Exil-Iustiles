@@ -3,6 +3,7 @@ using System.Collections;
 
 public class NormalDoorOpen : MonoBehaviour
 {
+    public Animator anim;
 
     private bool notPressAgain;
     private void OnTriggerStay(Collider other)
@@ -12,13 +13,13 @@ public class NormalDoorOpen : MonoBehaviour
             if (Input.GetKey(KeyCode.F) && notPressAgain == false)
             {
                 
-                if(gameObject.GetComponentInChildren<Animator>().GetBool("Open") == false)
+                if(anim.GetBool("Open") == false)
                 {
-                    gameObject.GetComponentInChildren<Animator>().SetBool("Open", true);
+                    anim.SetBool("Open", true);
                 }
-                else if(gameObject.GetComponentInChildren<Animator>().GetBool("Open") == true)
+                else if(anim.GetBool("Open") == true)
                 {
-                    gameObject.GetComponentInChildren<Animator>().SetBool("Open", false);
+                    anim.SetBool("Open", false);
                 }
 
                 StartCoroutine(cor());

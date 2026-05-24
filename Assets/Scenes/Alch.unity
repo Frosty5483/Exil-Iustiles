@@ -417,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0770f88057c3f57488cb95dbbd6cf7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1588947556}
 --- !u!1 &742812139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1077,7 @@ GameObject:
   - component: {fileID: 1041217326}
   - component: {fileID: 1041217325}
   - component: {fileID: 1041217324}
+  - component: {fileID: 1041217328}
   m_Layer: 0
   m_Name: ID
   m_TagString: Untagged
@@ -1098,12 +1100,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.8727647, y: 36.532578, z: 3.2246454}
+  m_Center: {x: -0.4363807, y: 17.766287, z: -1.1123214}
 --- !u!23 &1041217325
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1172,6 +1174,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -27.899, z: 0}
+--- !u!114 &1041217328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041217323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b0a911abfb2bc4da3171fb197bfb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnim: {fileID: 2016177467}
+  popTxt: {fileID: 882331675}
+  invSys: {fileID: 0}
+  item: {fileID: 919954272, guid: 3e89585271bef7e4582e427a3ef2ed53, type: 3}
+  otherSideItem: {fileID: -2048732204, guid: 3e89585271bef7e4582e427a3ef2ed53, type: 3}
+  toolTipTxt: "ID f\xFCr Solan Hollis von Sanctum Vitae"
+  targetBool: 2
+  utils: {fileID: 0}
 --- !u!1 &1158986504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,80 +1594,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1588947555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1683566077
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1683566079}
-  - component: {fileID: 1683566078}
-  - component: {fileID: 1683566080}
-  m_Layer: 0
-  m_Name: IdEmpty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1683566078
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683566077}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.6035615, y: 26.878803, z: 4.166996}
-  m_Center: {x: 0, y: 1.5337348, z: -1.583498}
---- !u!4 &1683566079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683566077}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3503814, y: 0.607, z: 17.165295}
-  m_LocalScale: {x: 0.6365616, y: 0.011554905, z: 0.37255}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1683566080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683566077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4b0a911abfb2bc4da3171fb197bfb3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnim: {fileID: 2016177467}
-  popTxt: {fileID: 882331675}
-  invSys: {fileID: 0}
-  item: {fileID: 919954272, guid: 3e89585271bef7e4582e427a3ef2ed53, type: 3}
-  otherSideItem: {fileID: -2048732204, guid: 3e89585271bef7e4582e427a3ef2ed53, type: 3}
-  toolTipTxt: "ID f\xFCr Solan Hollis von Sanctum Vitae"
-  targetBool: 2
-  utils: {fileID: 0}
 --- !u!1001 &1810475005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2017,6 +1965,5 @@ SceneRoots:
   - {fileID: 484938078}
   - {fileID: 1588947555}
   - {fileID: 1158986508}
-  - {fileID: 1683566079}
   - {fileID: 1041217327}
   - {fileID: 882331677}
