@@ -9,7 +9,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Valentina");
+        SceneManager.LoadSceneAsync("Valentina");
     }
 
     public void Options()

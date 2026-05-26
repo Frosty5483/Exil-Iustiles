@@ -33,6 +33,7 @@ public class CutSceneManag : MonoBehaviour
     private void Start()
     {
         player = Utils.FindWithTagAcrossAllScenes("Player");
+        Debug.Log("player go:" + player.name);
         utils = Utils.Instance;
         if (utils.hasWatchedCutScenes == false)
         {
