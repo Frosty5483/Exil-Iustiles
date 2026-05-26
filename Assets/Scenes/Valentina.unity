@@ -10907,7 +10907,7 @@ GameObject:
   - component: {fileID: 2072202791}
   - component: {fileID: 2072202792}
   m_Layer: 0
-  m_Name: Ambiente
+  m_Name: BGSOund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10939,7 +10939,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 75a3ebdc945e1b047a04ed49a937cb91, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4f9534023c4b67740b61535fa614f217, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.169
   m_Pitch: 1

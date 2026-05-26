@@ -217,6 +217,7 @@ public class UiInputSys : MonoBehaviour
     public void ResetAll()
     {
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
         SceneManager.LoadScene(0);
     }
 
