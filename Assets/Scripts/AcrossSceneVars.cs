@@ -10,6 +10,7 @@ public class AcrossSceneVars : MonoBehaviour
     public GameObject tps;
     public GameObject mc;
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
     public GameObject eventSys;
 
     [Header("Quests")]
@@ -48,6 +49,7 @@ public class AcrossSceneVars : MonoBehaviour
             DontDestroyOnLoad(inputSys);
             DontDestroyOnLoad(mc);
             DontDestroyOnLoad(pauseMenu);
+            DontDestroyOnLoad(optionsMenu);
             DontDestroyOnLoad(eventSys);
         }
         else
@@ -60,6 +62,7 @@ public class AcrossSceneVars : MonoBehaviour
             Destroy(inputSys);
             Destroy(mc);
             Destroy(pauseMenu);
+            Destroy(optionsMenu);
             Destroy(eventSys);
             Destroy(gameObject); // destroy this duplicate last
         }
@@ -67,8 +70,6 @@ public class AcrossSceneVars : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-            SceneManager.LoadScene(1);
 
         if (findFlintBur)
         {

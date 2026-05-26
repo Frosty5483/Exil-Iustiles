@@ -55,10 +55,6 @@ public class CutSceneManag : MonoBehaviour
     {
         player = Utils.FindWithTagAcrossAllScenes("Player");
         utils = Utils.Instance;
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ShowCutScene();
-        }
     }
 
     public void ShowCutScene()

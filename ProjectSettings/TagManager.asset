@@ -37,6 +37,7 @@ TagManager:
   - UIcanv
   - InvSys
   - CoinSys
+  - optionsMenu
   layers:
   - Default
   - TransparentFX

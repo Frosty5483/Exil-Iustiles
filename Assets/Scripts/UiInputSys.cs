@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UiInputSys : MonoBehaviour
 {
@@ -20,8 +21,22 @@ public class UiInputSys : MonoBehaviour
     public GameObject closedQuestMenu;
     public bool viewOpen;
 
+    public GameObject optionsMenu;
+
     private void Update()
     {
+        if(optionsMenu.active == true)
+        {
+            viewOpen = true;
+            if(Input.GetKey(KeyCode.Escape))
+            {
+                viewOpen = false;
+                optionsMenu.SetActive(false);
+                pauseMenu.SetActive(true);
+            }
+        }
+
+
         if (playerMovNew == null)
             playerMovNew = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMoveNew>();
 
@@ -187,8 +202,28 @@ public class UiInputSys : MonoBehaviour
         StartCoroutine(waitForNextPause(0.25f));
     }
 
+    public void Options()
+    {
+        optionsMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+    }
+
+    public void Back()
+    {
+        optionsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResetAll()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(0);
+    }
+
+
     public void QuitGame()
     {
+        PlayerPrefs.Save();
         Application.Quit();
     }
 }
