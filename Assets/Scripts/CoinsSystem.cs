@@ -23,6 +23,7 @@ public class CoinsSystem : MonoBehaviour
     public void AddCoins(int addedCoins)
     {
         coinsNumb += addedCoins;
+        Debug.Log("Add Coins");
     }
 
     public void RemoveCoins(int removedCoins)

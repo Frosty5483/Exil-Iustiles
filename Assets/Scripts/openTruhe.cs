@@ -1,19 +1,24 @@
-using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class pickUpObj : MonoBehaviour
+public class openTruhe : MonoBehaviour
 {
     [SerializeField] private TMP_Text popTxt;
 
     [SerializeField] private Animator playerAnim;
 
+    public Animator chestAnim;
+
     [SerializeField] CoinsSystem coinSys;
 
     private bool hiddenSafe;
 
-    public int coinAmount;
+    public int coinAmountMin;
+    public int coinAmountMax;
+
+    private bool cantOpen;
+
+    public string playerPrefString;
 
     private void Start()
     {
@@ -21,13 +26,13 @@ public class pickUpObj : MonoBehaviour
 
         popTxt.text = "";
         hiddenSafe = false;
-        if (!PlayerPrefs.HasKey("coin1"))
+        if (!PlayerPrefs.HasKey(playerPrefString))
         {
-            PlayerPrefs.SetInt("coin1", 0);
+            PlayerPrefs.SetInt(playerPrefString, 0);
         }
-        else if(PlayerPrefs.GetInt("coin1") == 1)
+        else if (PlayerPrefs.GetInt(playerPrefString) == 1)
         {
-            Destroy(this.gameObject);
+            cantOpen = true;
         }
     }
 
@@ -38,20 +43,21 @@ public class pickUpObj : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && cantOpen == false)
         {
             popTxt.text = "Press [F] to pick up";
             if (!hiddenSafe && Input.GetKey(KeyCode.F))
             {
+                cantOpen = true;
                 hiddenSafe = true;
                 hiddenSafe = false;
                 popTxt.text = "";
-                gameObject.SetActive(false);
-                PlayerPrefs.SetInt("coin1", 1);
-                if(playerAnim.gameObject.GetComponent<PlayerMoveNew>().inFPS == false)
+                chestAnim.SetTrigger("Collect");
+                PlayerPrefs.SetInt(playerPrefString, 1);
+                if (playerAnim.gameObject.GetComponent<PlayerMoveNew>().inFPS == false)
                 {
                     playerAnim.SetTrigger("pickUp");
-                    coinSys.AddCoins(coinAmount);
+                    coinSys.AddCoins(Random.Range(coinAmountMin, coinAmountMax));
                 }
             }
         }
@@ -64,6 +70,4 @@ public class pickUpObj : MonoBehaviour
             popTxt.text = "";
         }
     }
-
 }
-
